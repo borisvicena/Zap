@@ -1,16 +1,18 @@
-import { Link } from "expo-router";
-import { Text, StyleSheet, Button, ScrollView } from "react-native";
+import { Link, router } from "expo-router";
+import { useState } from "react";
+import { Text, StyleSheet, View } from "react-native";
+import { Channel, ChannelList, MessageInput, MessageList } from "stream-chat-expo";
 
 export default function Home() {
+  const [channel, setChannel] = useState();
+
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.header}>Welcome to Blare!</Text>
       <Text style={styles.intro}>Your hub for free speech and community discussions.</Text>
-      <Link href={"/(tabs)/chats"} style={styles.link}>
-        <Text style={styles.linkText}>Start a Chat</Text>
-      </Link>
-      {/* Add more components below */}
-    </ScrollView>
+      <Text style={styles.channels}>Channels</Text>
+      <ChannelList onSelect={(channel) => router.push(`/channel/${channel.cid}`)} />
+    </View>
   );
 }
 
@@ -31,11 +33,10 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     color: "#666",
   },
-  link: {
+  channels: {
     marginTop: 16,
-  },
-  linkText: {
+    marginBottom: 8,
     fontWeight: "bold",
-    color: "#007BFF",
+    fontSize: 20,
   },
 });
