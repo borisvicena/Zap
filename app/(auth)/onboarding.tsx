@@ -1,8 +1,8 @@
 import React from "react";
 import Swiper from "react-native-swiper";
 import { View, StyleSheet } from "react-native";
-import WelcomeScreen from "../components/Onboarding/Welcome";
-import AboutScreen from "../components/Onboarding/About";
+import WelcomeScreen from "../../components/Onboarding/Welcome";
+import AboutScreen from "../../components/Onboarding/About";
 import { Stack } from "expo-router";
 import Auth from "@/components/Auth";
 
