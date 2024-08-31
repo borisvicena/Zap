@@ -1,16 +1,16 @@
 import { Link } from "expo-router";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { Text, StyleSheet, Button, ScrollView } from "react-native";
 
 export default function Home() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.header}>Welcome to Blare!</Text>
       <Text style={styles.intro}>Your hub for free speech and community discussions.</Text>
-      <Link href={"/home/next-page"} style={styles.link}>
-        <Text style={styles.linkText}>Go to Next Page</Text>
+      <Link href={"/(tabs)/chats"} style={styles.link}>
+        <Text style={styles.linkText}>Start a Chat</Text>
       </Link>
       {/* Add more components below */}
-    </View>
+    </ScrollView>
   );
 }
 
