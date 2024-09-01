@@ -1,5 +1,6 @@
 import { useAuth } from "@/app/providers/AuthProvider";
-import { Link, router } from "expo-router";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { Link, router, Stack } from "expo-router";
 import { useState } from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { Channel, ChannelList, MessageInput, MessageList } from "stream-chat-expo";
@@ -9,15 +10,26 @@ export default function Home() {
   const { user } = useAuth();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Welcome to Blare!</Text>
-      <Text style={styles.intro}>Your hub for free speech and community discussions.</Text>
-      <Text style={styles.channels}>Channels</Text>
-      <ChannelList
-        filters={{ members: { $in: [user?.id] } }}
-        onSelect={(channel) => router.push(`/channel/${channel.cid}`)}
+    <>
+      <Stack.Screen
+        options={{
+          headerRight: () => (
+            <Link href={"/(app)/users"} asChild>
+              <FontAwesome5 name="plus" size={22} color="blue" style={{ marginHorizonal: 15 }} />
+            </Link>
+          ),
+        }}
       />
-    </View>
+      <View style={styles.container}>
+        <Text style={styles.header}>Welcome to Blare!</Text>
+        <Text style={styles.intro}>Your hub for free speech and community discussions.</Text>
+        <Text style={styles.channels}>Channels</Text>
+        <ChannelList
+          filters={{ members: { $in: [user?.id] } }}
+          onSelect={(channel) => router.push(`/channel/${channel.cid}`)}
+        />
+      </View>
+    </>
   );
 }
 
