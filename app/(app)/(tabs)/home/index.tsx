@@ -1,3 +1,4 @@
+import { useAuth } from "@/app/providers/AuthProvider";
 import { Link, router } from "expo-router";
 import { useState } from "react";
 import { Text, StyleSheet, View } from "react-native";
@@ -5,13 +6,17 @@ import { Channel, ChannelList, MessageInput, MessageList } from "stream-chat-exp
 
 export default function Home() {
   const [channel, setChannel] = useState();
+  const { user } = useAuth();
 
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Welcome to Blare!</Text>
       <Text style={styles.intro}>Your hub for free speech and community discussions.</Text>
       <Text style={styles.channels}>Channels</Text>
-      <ChannelList onSelect={(channel) => router.push(`/channel/${channel.cid}`)} />
+      <ChannelList
+        filters={{ members: { $in: [user?.id] } }}
+        onSelect={(channel) => router.push(`/channel/${channel.cid}`)}
+      />
     </View>
   );
 }
