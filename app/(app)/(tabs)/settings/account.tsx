@@ -12,6 +12,7 @@ import {
   ActivityIndicator,
   ScrollView,
 } from "react-native";
+import Avatar from "@/components/Avatar";
 
 export default function Account() {
   const [user, setUser] = useState<User | null>(null);
@@ -26,6 +27,7 @@ export default function Account() {
     username: "",
     full_name: "",
     website: "",
+    avatar_url: "",
   });
 
   useEffect(() => {
@@ -54,6 +56,7 @@ export default function Account() {
             username: profileData.username,
             full_name: profileData.full_name,
             website: profileData.website,
+            avatar_url: profileData.avatar_url,
           });
         }
       }
@@ -90,6 +93,13 @@ export default function Account() {
     <SafeAreaView style={styles.safeArea}>
       <ScrollView style={styles.container}>
         <Text style={styles.title}>Edit Profile</Text>
+        <View style={{ alignItems: "center" }}>
+          <Avatar
+            size={200}
+            url={formData.avatar_url}
+            onUpload={(url: string) => setFormData({ ...formData, avatar_url: url })}
+          />
+        </View>
         <TextInput
           style={styles.input}
           placeholder="Full Name"
