@@ -1,6 +1,8 @@
 import { supabase } from "@/utils/supabase";
 import { Session, User } from "@supabase/supabase-js";
+import { router } from "expo-router";
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
+import { Alert } from "react-native";
 
 type AuthContext = {
   session: Session | null;
