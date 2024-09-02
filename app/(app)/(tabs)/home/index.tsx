@@ -15,7 +15,7 @@ export default function Home() {
         options={{
           headerRight: () => (
             <Link href={"/(app)/users"} asChild>
-              <FontAwesome5 name="plus" size={22} color="blue" style={{ marginHorizonal: 15 }} />
+              <FontAwesome5 name="plus" size={22} color="blue" style={{ marginHorizontal: 15 }} />
             </Link>
           ),
         }}
@@ -25,7 +25,7 @@ export default function Home() {
         <Text style={styles.intro}>Your hub for free speech and community discussions.</Text>
         <Text style={styles.channels}>Channels</Text>
         <ChannelList
-          filters={{ members: { $in: [user?.id] } }}
+          filters={{ members: { $in: [user?.id || null] } }}
           onSelect={(channel) => router.push(`/channel/${channel.cid}`)}
         />
       </View>

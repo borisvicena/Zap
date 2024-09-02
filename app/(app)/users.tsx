@@ -5,12 +5,12 @@ import { useAuth } from "../providers/AuthProvider";
 import UserListItem from "@/components/UserListItem";
 
 export default function UsersScreen() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<any>([]);
   const { user } = useAuth();
 
   useEffect(() => {
     const fetchUsers = async () => {
-      let { data: profiles, error } = await supabase.from("profiles").select("*").neq("id", user.id);
+      let { data: profiles, error } = await supabase.from("profiles").select("*").neq("id", user?.id);
       setUsers(profiles);
     };
     fetchUsers();

@@ -18,7 +18,7 @@ const AuthContext = createContext<AuthContext>({
 
 export default function AuthProvider({ children }: PropsWithChildren) {
   const [session, setSession] = useState<Session | null>(null);
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState<any>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -43,7 +43,9 @@ export default function AuthProvider({ children }: PropsWithChildren) {
     fetchProfile();
   }, [session?.user]);
 
-  return <AuthContext.Provider value={{ session, user: session?.user, profile }}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ session, user: session?.user ?? null, profile }}>{children}</AuthContext.Provider>
+  );
 }
 
 export const useAuth = () => useContext(AuthContext);
