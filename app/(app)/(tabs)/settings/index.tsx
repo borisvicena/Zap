@@ -58,6 +58,7 @@ export default function Settings() {
 				{user ? (
 					<>
 						<View style={styles.profileContainer}>
+							<Text style={{ color: "#C8ACD6" }}>Your email address</Text>
 							<Text style={styles.profileName}>{user.email}</Text>
 						</View>
 						<TouchableOpacity onPress={() => router.push("/(tabs)/settings/account")} style={styles.button}>
@@ -78,7 +79,7 @@ export default function Settings() {
 const styles = StyleSheet.create({
 	safeArea: {
 		flex: 1,
-		backgroundColor: "#FAFAFA",
+		backgroundColor: "#17153B",
 	},
 	scrollView: {
 		padding: 20,
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
 	profileContainer: {
 		padding: 16,
 		marginBottom: 24,
-		backgroundColor: "#FFFFFF",
+		backgroundColor: "#2E236C",
 		borderRadius: 12,
 		shadowColor: "#000",
 		shadowOffset: {width: 0, height: 2},
@@ -100,15 +101,16 @@ const styles = StyleSheet.create({
 		shadowRadius: 8,
 		elevation: 5,
 		alignItems: "center",
+		gap: 4,
 	},
 	profileName: {
 		fontSize: 18,
 		fontWeight: "600",
-		color: "#333333",
+		color: "#FFF",
 	},
 	button: {
 		marginVertical: 10,
-		backgroundColor: "#007BFF",
+		backgroundColor: "#433D8B",
 		borderRadius: 12,
 		paddingVertical: 14,
 		paddingHorizontal: 16,
@@ -126,7 +128,7 @@ const styles = StyleSheet.create({
 	},
 	logOutBtnContainer: {
 		marginTop: 20,
-		backgroundColor: "#FF3B30",
+		backgroundColor: "#BE3144",
 		borderRadius: 12,
 		paddingVertical: 14,
 		alignItems: "center",

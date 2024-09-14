@@ -129,7 +129,7 @@ export default function Account() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#FAFAFA",
+    backgroundColor: "#17153B",
   },
   container: {
     padding: 20,
@@ -137,22 +137,23 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "600",
-    color: "#333333",
+    color: "#FFF",
     marginBottom: 20,
+    alignSelf: "center",
   },
   input: {
     height: 50,
-    backgroundColor: "#FFFFFF",
-    borderColor: "#E0E0E0",
+    backgroundColor: "#2E236C",
+    borderColor: "#C8ACD6",
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 16,
     marginBottom: 16,
     fontSize: 16,
-    color: "#333333",
+    color: "#FFF",
   },
   button: {
-    backgroundColor: "#007BFF",
+    backgroundColor: "#433D8B",
     borderRadius: 12,
     paddingVertical: 14,
     alignItems: "center",

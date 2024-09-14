@@ -28,21 +28,23 @@ AppState.addEventListener("change", (state) => {
 export default function Auth() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [loading, setLoading] = useState(false);
+	const [loadingSignIn, setLoadingSignIn] = useState(false);
+	const [loadingSignUp, setLoadingSignUp] = useState(false);
+
 
 	async function signInWithEmail() {
-		setLoading(true);
+		setLoadingSignIn(true);
 		const {error} = await supabase.auth.signInWithPassword({
 			email: email,
 			password: password,
 		});
 
 		if (error) Alert.alert("Sign In Error", error.message);
-		setLoading(false);
+		setLoadingSignIn(false);
 	}
 
 	async function signUpWithEmail() {
-		setLoading(true);
+		setLoadingSignUp(true);
 		const {
 			data: {session},
 			error,
@@ -53,7 +55,7 @@ export default function Auth() {
 
 		if (error) Alert.alert("Sign Up Error", error.message);
 		if (!session) Alert.alert("Please check your inbox for email verification!");
-		setLoading(false);
+		setLoadingSignUp(false);
 	}
 
 	return (
@@ -63,24 +65,28 @@ export default function Auth() {
 				<View className="w-full">
 					<Input
 						label="Email"
+						labelStyle={styles.input}
 						onChangeText={(text) => setEmail(text)}
 						value={email}
 						placeholder="welcome@blare.app"
 						autoCapitalize={"none"}
+						inputStyle={{color: "white"}}
 					/>
 				</View>
 				<View className="w-full">
 					<Input
 						label="Password"
+						labelStyle={styles.input}
 						onChangeText={(text) => setPassword(text)}
 						value={password}
 						secureTextEntry={true}
 						placeholder="Password"
 						autoCapitalize={"none"}
+						inputStyle={{color: "white"}}
 					/>
 				</View>
 				<TouchableOpacity onPress={signInWithEmail} style={styles.button}>
-					{loading ? (
+					{loadingSignIn ? (
 						<ActivityIndicator size="small" style={styles.loadingIndicator}/>
 					) : (
 						<Text style={styles.buttonText}>Sign In</Text>
@@ -88,7 +94,7 @@ export default function Auth() {
 
 				</TouchableOpacity>
 				<TouchableOpacity onPress={signUpWithEmail} style={styles.button}>
-					{loading ? (
+					{loadingSignUp ? (
 						<ActivityIndicator size="small" style={styles.loadingIndicator}/>
 					) : (
 						<Text style={styles.buttonText}>Sign Up</Text>
@@ -129,4 +135,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 	},
+	input: {
+		color: '#FFF'
+	}
 });
