@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Blare",
-    "slug": "Blare",
+    "name": "Zap",
+    "slug": "zap",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -29,6 +29,15 @@
     "plugins": ["expo-router"],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "57159f7c-c674-451e-b521-7fd5e4303dfd"
+      }
+    },
+    "owner": "borisvicena"
   }
 }

@@ -11,8 +11,8 @@ export default function Onboarding() {
     <Swiper
       loop={false}
       showsPagination={true}
-      dotStyle={{ backgroundColor: "#555555" }} // Darker pagination dots
-      activeDotStyle={{ backgroundColor: "#333333" }} // Darker active dot
+      dotStyle={{ backgroundColor: "#433D8B" }} // Darker pagination dots
+      activeDotStyle={{ backgroundColor: "#C8ACD6" }} // Darker active dot
     >
       <View style={styles.slide}>
         <WelcomeScreen />
@@ -30,5 +30,6 @@ export default function Onboarding() {
 const styles = StyleSheet.create({
   slide: {
     flex: 1,
+    backgroundColor: "#17153B"
   },
 });
