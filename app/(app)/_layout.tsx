@@ -1,19 +1,19 @@
-import { Redirect, Stack } from "expo-router";
+import {Redirect, Stack} from "expo-router";
 import ChatProvider from "../providers/ChatProvider";
-import { useAuth } from "../providers/AuthProvider";
+import {useAuth} from "../providers/AuthProvider";
 
 export default function TabsLayout() {
-  const { user } = useAuth();
+	const {user} = useAuth();
 
-  if (!user) {
-    return <Redirect href="/(auth)/onboarding" />;
-  }
+	if (!user) {
+		return <Redirect href="/(auth)/onboarding"/>;
+	}
 
-  return (
-    <ChatProvider>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
-    </ChatProvider>
-  );
+	return (
+		<ChatProvider>
+				<Stack>
+					<Stack.Screen name="(tabs)" options={{headerShown: false}}/>
+				</Stack>
+		</ChatProvider>
+	);
 }

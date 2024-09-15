@@ -1,7 +1,5 @@
-import { supabase } from "@/utils/supabase";
-import { Redirect, router, Slot, Stack } from "expo-router";
-import { useEffect } from "react";
+import { Redirect } from "expo-router";
 
 export default function App() {
-  return <Redirect href="/(auth)/onboarding" />;
+  return <Redirect href="/(auth)/onboarding"/>;
 }

@@ -4,6 +4,8 @@ import { Link, router, Stack } from "expo-router";
 import { useState } from "react";
 import {Text, StyleSheet, View, Image} from "react-native";
 import { Channel, ChannelList, MessageInput, MessageList } from "stream-chat-expo";
+import CustomListUI from "@/components/CustomListUI";
+import CustomChannelUI from "@/components/CustomChannelUI";
 
 export default function Home() {
   const [channel, setChannel] = useState();
@@ -25,7 +27,8 @@ export default function Home() {
       />
       <View style={styles.container}>
         <ChannelList
-          filters={{ members: { $in: [user?.id || null] } }}
+          List={CustomListUI} // Custom list UI
+          filters={{ members: { $in: [user?.id || null] }}}
           onSelect={(channel) => router.push(`/channel/${channel.cid}`)}
         />
       </View>
