@@ -28,7 +28,7 @@ export default function Account() {
     full_name: "",
     website: "",
     avatar_url: "",
-  });
+});
 
   useEffect(() => {
     const fetchUserData = async () => {

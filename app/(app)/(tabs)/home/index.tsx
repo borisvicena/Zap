@@ -1,8 +1,8 @@
 import { useAuth } from "@/app/providers/AuthProvider";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Link, router, Stack } from "expo-router";
-import { useState } from "react";
-import {Text, StyleSheet, View, Image} from "react-native";
+import React, { useState } from "react";
+import { Text, StyleSheet, View, Image } from "react-native";
 import { Channel, ChannelList, MessageInput, MessageList } from "stream-chat-expo";
 import CustomListUI from "@/components/CustomListUI";
 import CustomChannelUI from "@/components/CustomChannelUI";
@@ -16,11 +16,11 @@ export default function Home() {
       <Stack.Screen
         options={{
           headerStyle: {
-            backgroundColor: "#17153B"
+            backgroundColor: "#17153B",
           },
           headerRight: () => (
             <Link href={"/(app)/users"} asChild>
-              <FontAwesome5 name="plus" size={22} color="blue" style={{marginHorizontal: 15}} />
+              <FontAwesome5 name="plus" size={20} color="#C8ACD6" style={{ marginHorizontal: 15 }} />
             </Link>
           ),
         }}
@@ -28,8 +28,7 @@ export default function Home() {
       <View style={styles.container}>
         <ChannelList
           List={CustomListUI} // Custom list UI
-          filters={{ members: { $in: [user?.id || null] }}}
-          onSelect={(channel) => router.push(`/channel/${channel.cid}`)}
+          filters={{ members: { $in: [user?.id || null] } }}
         />
       </View>
     </>
